@@ -22,8 +22,10 @@ dist/
 nbdist/
 .nb-gradle/
 
+
 ### Mac ###
 .DS_Store
 
 ### springboot-jwt-starter ###
 npm-debug.*
+src/main/static/
