@@ -4,6 +4,7 @@ import com.bfwg.model.User;
 import com.bfwg.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -23,17 +24,18 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
  */
 
 @RestController
+@RequestMapping( value = "/api/user", produces = MediaType.APPLICATION_JSON_VALUE )
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping( method = GET, value = "/user/{userId}" )
+    @RequestMapping( method = GET, value = "/{userId}" )
     public User loadById( @PathVariable Long userId ) {
         return this.userService.findById( userId );
     }
 
-    @RequestMapping( method = GET, value= "/user/all")
+    @RequestMapping( method = GET, value= "/all")
     public List<User> loadAll() {
         return this.userService.findAll();
     }
@@ -52,4 +54,5 @@ public class UserController {
                 .getAuthentication()
                 .getPrincipal();
     }
+
 }
