@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Headers } from '@angular/http';
 import { ApiService } from './api.service';
 import { Observable } from 'rxjs/Observable';
 import { ConfigService } from './config.service';
@@ -22,6 +23,15 @@ export class UserService {
     .catch(() => null);
     return promise;
   }
+
+  login(user) {
+    let body = `username=${user.username}&password=${user.password}`;
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    return this.apiService.post(this.config.login_url, body, headers);
+  }
+
+
 
   getUserInfo(): Observable<any> {
     return this.apiService.get(this.config.whoami_url);

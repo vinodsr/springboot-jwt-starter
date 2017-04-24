@@ -41,13 +41,13 @@ export class ApiService {
     .catch(this.checkIdp.bind(this));
   }
 
-  post(path: string, body, put?): Observable<any> {
+  post(path: string, body, customHeaders?, put?): Observable<any> {
     return this.http.request(
       path,
       {
         method: put ? RequestMethod.Put : RequestMethod.Post,
-        body: JSON.stringify(body),
-        headers: this.headers,
+        body: body,
+        headers: customHeaders || this.headers,
         withCredentials: true
       }
     )

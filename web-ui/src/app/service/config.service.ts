@@ -10,6 +10,7 @@ export class ConfigService {
 
   private _whoami_url: string = this._user_url + '/whoami';
 
+  private _login_url: string = this._api_url + '/login';
 
   get api_url(): string {
       return this._api_url;
@@ -21,6 +22,10 @@ export class ConfigService {
 
   get whoami_url(): string {
       return this._whoami_url;
+  }
+
+  get login_url(): string {
+      return this._login_url;
   }
 
 }
