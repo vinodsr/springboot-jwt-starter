@@ -8,8 +8,9 @@ import 'style-loader!@angular/material/core/theming/prebuilt/indigo-pink.css';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home';
+import { LoginComponent } from './login';
+import { HeaderComponent } from './component';
 
 import {
   ApiService,
@@ -24,6 +25,7 @@ export function initUserFactory(userService: UserService) {
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     HomeComponent,
     LoginComponent
   ],

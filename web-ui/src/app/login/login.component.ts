@@ -12,9 +12,8 @@ import 'rxjs/add/observable/interval';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
-
 export class LoginComponent implements OnInit, OnDestroy {
   title = 'Login';
   githubLink = 'https://github.com/bfwg/springboot-jwt-starter';
