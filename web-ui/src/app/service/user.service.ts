@@ -31,9 +31,8 @@ export class UserService {
     return this.apiService.post(this.config.login_url, body, headers);
   }
 
-
-
-  getUserInfo(): Observable<any> {
-    return this.apiService.get(this.config.whoami_url);
+  logout() {
+    return this.apiService.post(this.config.logout_url, {});
   }
+
 }

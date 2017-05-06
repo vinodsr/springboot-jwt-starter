@@ -66,11 +66,12 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.errorDiagnostic = null;
 
     this.userService.login(this.form.value).subscribe(data => {
+      this.userService.initUser();
       this.router.navigate(['/']);
     },
     error => {
       this.submitted = false;
-      this.errorDiagnostic = error.status;
+      this.errorDiagnostic = 'Incorrect username or password.';
     });
   }
 

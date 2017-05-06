@@ -25,8 +25,7 @@ export class ApiService {
         withCredentials: true
       }
     )
-    .map(this.extractData)
-    .catch(this.handleError);
+    .map(this.extractData);
   }
 
   get(path: string): Observable<any> {
@@ -38,7 +37,7 @@ export class ApiService {
       }
     )
     .map(this.extractData)
-    .catch(this.checkIdp.bind(this));
+    .catch(this.checkAuth.bind(this));
   }
 
   post(path: string, body, customHeaders?, put?): Observable<any> {
@@ -52,7 +51,7 @@ export class ApiService {
       }
     )
     .map(this.extractData)
-    .catch(this.checkIdp.bind(this));
+    .catch(this.checkAuth.bind(this));
   }
 
   put(path: string, body: any): Observable<any> {
@@ -66,19 +65,13 @@ export class ApiService {
   }
 
   // Display error if logged in, otherwise redirect to IDP
-  private checkIdp(error: any) {
+  private checkAuth(error: any) {
     if (error && error.status === 401) {
       // this.redirectIfUnauth(error);
     } else {
       // this.displayError(error);
     }
+    throw error;
   }
 
-
-  private handleError(error: any) {
-    let errMsg = (error.message) ? error.message :
-      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
-    // console.error(error); // log to console instead
-    return Observable.throw(error);
-  }
 }
