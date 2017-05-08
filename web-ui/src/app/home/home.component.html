@@ -1,53 +1,13 @@
 <div class="content">
-  <md-card class="api-card">
-    <md-card-header>
-      <md-card-title>Shiba Inu</md-card-title>
-      <md-card-subtitle>Dog Breed</md-card-subtitle>
-    </md-card-header>
-    <img md-card-image src="assets/img/examples/shiba2.jpg">
-    <md-card-content>
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-      </p>
-    </md-card-content>
-    <md-card-actions>
-      <button md-button>LIKE</button>
-    </md-card-actions>
-  </md-card>
-  <md-card class="api-card">
-    <md-card-header>
-      <md-card-title>Shiba Inu</md-card-title>
-      <md-card-subtitle>Dog Breed</md-card-subtitle>
-    </md-card-header>
-    <img md-card-image src="assets/img/examples/shiba2.jpg">
-    <md-card-content>
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-      </p>
-    </md-card-content>
-    <md-card-actions>
-      <button md-button>LIKE</button>
-    </md-card-actions>
-  </md-card>
-  <md-card class="api-card">
-    <md-card-header>
-      <md-card-title>Shiba Inu</md-card-title>
-      <md-card-subtitle>Dog Breed</md-card-subtitle>
-    </md-card-header>
-    <img md-card-image src="assets/img/examples/shiba2.jpg">
-    <md-card-content>
-      <p>
-        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-        bred for hunting.
-      </p>
-    </md-card-content>
-    <md-card-actions>
-      <button md-button>LIKE</button>
-    </md-card-actions>
-  </md-card>
+  <app-api-card
+     title='"whoami" endpoint'
+     subTitle="Authorized role: USER"
+     imgUrl=""
+     content="This endpoint will return the current user's information."
+     apiText="/api/user/whoami"
+     [responseObj]="whoamIResponse"
+     (apiClick)="makeRequest($event)"
+  >
+  </app-api-card>
+  <!-- <app-api-card></app-api-card> -->
 </div>

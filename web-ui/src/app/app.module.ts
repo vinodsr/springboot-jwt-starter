@@ -10,7 +10,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
-import { HeaderComponent } from './component';
+import {
+  HeaderComponent,
+  ApiCardComponent
+} from './component';
 
 import {
   ApiService,
@@ -27,6 +30,7 @@ export function initUserFactory(userService: UserService) {
   declarations: [
     AppComponent,
     HeaderComponent,
+    ApiCardComponent,
     HomeComponent,
     LoginComponent
   ],

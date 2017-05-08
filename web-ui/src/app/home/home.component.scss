@@ -6,10 +6,10 @@
 }
 
 .content {
-  .api-card {
-    margin: 20px;
-    display: inline-block;
-    width: calc((100% - 260px) * 0.32);
+  display: flex;
+  flex-direction: row;
+  app-api-card {
+    flex: 1;
   }
 }
 

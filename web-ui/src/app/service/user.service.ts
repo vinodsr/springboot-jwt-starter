@@ -17,10 +17,13 @@ export class UserService {
     let promise = this.apiService.anonGet(this.config.whoami_url).toPromise()
     .then(user => {
       this.currentUser = user;
-      console.log(user);
     })
     .catch(() => null);
     return promise;
+  }
+
+  getMyInfo() {
+    return this.apiService.get(this.config.whoami_url);
   }
 
 }
