@@ -30,9 +30,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${jwt.cookie}")
     private String TOKEN_COOKIE;
 
-    @Value("${app.user_cookie}")
-    private String USER_COOKIE;
-
     @Bean
     public TokenAuthenticationFilter jwtAuthenticationTokenFilter() throws Exception {
         return new TokenAuthenticationFilter();
@@ -78,7 +75,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/api/logout"))
                 .logoutSuccessHandler(logoutSuccess)
-                .deleteCookies(TOKEN_COOKIE, USER_COOKIE);
+                .deleteCookies(TOKEN_COOKIE);
     }
 
 }

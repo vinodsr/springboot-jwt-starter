@@ -12,6 +12,11 @@
   background-repeat: no-repeat;
 }
 
+.content {
+  width: 100%;
+  max-width: 350px;
+}
+
 md-card {
   text-align:center;
   animation: fadein 1s;
@@ -19,8 +24,6 @@ md-card {
   -moz-animation: fadein 1s; /* Firefox */
   -webkit-animation: fadein 1s; /* Safari and Chrome */
 
-  width:85%;
-  max-width:350px;
 }
 
 md-input-container {

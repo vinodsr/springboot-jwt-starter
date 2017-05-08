@@ -3,7 +3,10 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { UserService } from '../service/user.service';
+import {
+  UserService,
+  AuthService
+} from '../service';
 
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs/Subscription';
@@ -17,12 +20,8 @@ import 'rxjs/add/observable/interval';
 export class LoginComponent implements OnInit, OnDestroy {
   title = 'Login';
   githubLink = 'https://github.com/bfwg/springboot-jwt-starter';
-
-  authenticatedObs: Observable<boolean>;
-  userServiceSub: Subscription;
-  authSub: Subscription;
-
   form: FormGroup;
+  authSub: Subscription;
 
   /**
    * Boolean used in telling the UI
@@ -39,6 +38,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
     private userService: UserService,
+    private authService: AuthService,
     private router: Router,
     private formBuilder: FormBuilder
   ) {
@@ -65,19 +65,31 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.submitted = true;
     this.errorDiagnostic = null;
 
-    this.userService.login(this.form.value).subscribe(data => {
-      this.userService.initUser();
-      this.router.navigate(['/']);
-    },
-    error => {
-      this.submitted = false;
-      this.errorDiagnostic = 'Incorrect username or password.';
+    let source = Observable.interval(1500)
+    .map(() => {
+      this.authService.login(this.form.value)
+      .subscribe(data => {
+        this.userService.initUser();
+        this.router.navigate(['/']);
+      },
+      error => {
+        this.submitted = false;
+        this.errorDiagnostic = 'Incorrect username or password.';
+      });
     });
+
+    this.resetAuthSub();
+    this.authSub = source.subscribe();
   }
 
   ngOnDestroy() {
-    if (this.userServiceSub) this.userServiceSub.unsubscribe();
-    if (this.authSub) this.authSub.unsubscribe();
+    this.resetAuthSub();
+  }
+
+  resetAuthSub() {
+    if (this.authSub) {
+      this.authSub.unsubscribe();
+    }
   }
 
 }

@@ -29,9 +29,6 @@ public class AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccess
     @Value("${jwt.cookie}")
     private String TOKEN_COOKIE;
 
-	@Value("${app.user_cookie}")
-	private String USER_COOKIE;
-
 	@Autowired
 	TokenHelper tokenHelper;
 
@@ -51,13 +48,8 @@ public class AuthenticationSuccessHandler extends SimpleUrlAuthenticationSuccess
 		authCookie.setPath( "/" );
 		authCookie.setHttpOnly( true );
 		authCookie.setMaxAge( EXPIRES_IN );
-		// Create flag Cookie
-		Cookie userCookie = new Cookie( USER_COOKIE, ( user.getFirstname() ) );
-		userCookie.setPath( "/" );
-		userCookie.setMaxAge( EXPIRES_IN );
 		// Add cookie to response
 		response.addCookie( authCookie );
-		response.addCookie( userCookie );
 		// JWT is also in the response
 		UserTokenState userTokenState = new UserTokenState(jws, EXPIRES_IN);
 		String jwtResponse = objectMapper.writeValueAsString( userTokenState );
