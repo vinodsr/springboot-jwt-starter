@@ -1,13 +1,34 @@
 <div class="content">
   <app-api-card
-     title='"whoami" endpoint'
+     title='"Foo"'
+     subTitle="Public"
+     imgUrl=""
+     content='This is an demo public endpoint which requires no authentication.'
+     apiText="/api/foo"
+     [responseObj]="fooResponse"
+     (apiClick)="makeRequest($event)"
+  >
+  </app-api-card>
+
+  <app-api-card
+     title='"Who am I"'
      subTitle="Authorized role: USER"
      imgUrl=""
-     content="This endpoint will return the current user's information."
+     content='The regular endpoint which returns the current user information. You have to sign in as either a User or an Admin to gain the access to this endpoint.'
      apiText="/api/user/whoami"
      [responseObj]="whoamIResponse"
      (apiClick)="makeRequest($event)"
   >
   </app-api-card>
-  <!-- <app-api-card></app-api-card> -->
+
+  <app-api-card
+     title='"All users"'
+     subTitle="Authorized role: ADMIN"
+     imgUrl=""
+     content='This endpoint will give you a list of all the users. You have to sign in as an Admin to gain the access to this endpoint.'
+     apiText="/api/user/all"
+     [responseObj]="allUserResponse"
+     (apiClick)="makeRequest($event)"
+  >
+  </app-api-card>
 </div>

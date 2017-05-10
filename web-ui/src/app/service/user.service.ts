@@ -26,4 +26,8 @@ export class UserService {
     return this.apiService.get(this.config.whoami_url);
   }
 
+  getAll() {
+    return this.apiService.get(this.config.users_url);
+  }
+
 }

@@ -19,6 +19,7 @@ import {
   ApiService,
   AuthService,
   UserService,
+  FooService,
   ConfigService
 } from './service';
 
@@ -43,6 +44,7 @@ export function initUserFactory(userService: UserService) {
     MaterialModule.forRoot()
   ],
   providers: [
+    FooService,
     AuthService,
     ApiService,
     UserService,

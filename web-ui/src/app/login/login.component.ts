@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.submitted = true;
     this.errorDiagnostic = null;
 
-    let source = Observable.interval(1500)
+    let source = Observable.interval(500)
     .map(() => {
       this.authService.login(this.form.value)
       .subscribe(data => {

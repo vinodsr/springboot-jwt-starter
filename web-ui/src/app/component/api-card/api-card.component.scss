@@ -1,5 +1,10 @@
+:host {
+  text-align: center;
+}
+
 md-card {
-  margin: 20px;
+  transition: height 1s;
+  text-align: left;
   display: inline-block;
   max-width: 350px;
   .response-success {
@@ -20,6 +25,11 @@ md-card {
     border: 1px solid transparent;
     border-radius: 4px;
   }
+
+  md-card-actions {
+    text-align: center;
+  }
+
   pre {
     display: block;
     padding: 9.5px;
