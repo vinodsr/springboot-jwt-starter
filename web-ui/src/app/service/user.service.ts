@@ -14,9 +14,14 @@ export class UserService {
   ) { }
 
   initUser() {
-    let promise = this.apiService.anonGet(this.config.whoami_url).toPromise()
-    .then(user => {
-      this.currentUser = user;
+    let promise = this.apiService.anonGet(this.config.refresh_token_url).toPromise()
+    .then(res => {
+      if (res.access_token !== null) {
+        this.getMyInfo()
+        .subscribe(user => {
+          this.currentUser = user;
+        });
+      }
     })
     .catch(() => null);
     return promise;

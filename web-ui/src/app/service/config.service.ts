@@ -8,6 +8,10 @@ export class ConfigService {
 
   private _user_url: string = this._api_url + '/user';
 
+  private _auth_url: string = this._api_url + '/auth';
+
+  private _refresh_token_url: string = this._auth_url + '/refresh';
+
   private _whoami_url: string = this._user_url + '/whoami';
 
   private _users_url: string = this._user_url + '/all';
@@ -20,6 +24,10 @@ export class ConfigService {
 
   get api_url(): string {
       return this._api_url;
+  }
+
+  get refresh_token_url(): string {
+      return this._refresh_token_url;
   }
 
   get whoami_url(): string {
