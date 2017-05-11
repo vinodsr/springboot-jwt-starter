@@ -13,6 +13,7 @@ export class ApiCardComponent implements OnInit {
   @Input() content: string;
   @Input() apiText: string;
   @Input() responseObj: any;
+  expand = false;
 
 
   @Output() apiClick: EventEmitter<any> = new EventEmitter();
@@ -22,12 +23,23 @@ export class ApiCardComponent implements OnInit {
   ngOnInit() {
   }
 
+  onButtonClick() {
+    this.expand = true;
+    this.apiClick.next(this.apiText);
+  }
+
   responsePanelClass() {
     if (!this.responseObj) {
       return '';
     }
-    return this.responseObj.status === 200 ?
-      'response response-success' : 'response response-error';
+    let rClass = ['response'];
+    if (this.expand) {
+      rClass.push('expand');
+    }
+    this.responseObj.status === 200 ?
+      rClass.push('response-success') :
+      rClass.push('response-error');
+    return rClass.join(' ');
   }
 
 }

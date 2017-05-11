@@ -109,8 +109,6 @@ public class TokenHelper {
         return new Date(getCurrentTimeMillis() + this.EXPIRES_IN * 1000);
     }
 
-
-
     public String getToken( HttpServletRequest request ) {
         /**
          *  Getting the token from Cookie store

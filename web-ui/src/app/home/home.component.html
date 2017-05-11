@@ -2,7 +2,7 @@
   <app-api-card
      title='"Foo"'
      subTitle="Public"
-     imgUrl=""
+     imgUrl="assets/image/foo.png"
      content='This is an demo public endpoint which requires no authentication.'
      apiText="/api/foo"
      [responseObj]="fooResponse"
@@ -13,7 +13,7 @@
   <app-api-card
      title='"Who am I"'
      subTitle="Authorized role: USER"
-     imgUrl=""
+     imgUrl="assets/image/user.png"
      content='The regular endpoint which returns the current user information. You have to sign in as either a User or an Admin to gain the access to this endpoint.'
      apiText="/api/user/whoami"
      [responseObj]="whoamIResponse"
@@ -24,7 +24,7 @@
   <app-api-card
      title='"All users"'
      subTitle="Authorized role: ADMIN"
-     imgUrl=""
+     imgUrl="assets/image/admin.png"
      content='This endpoint will give you a list of all the users. You have to sign in as an Admin to gain the access to this endpoint.'
      apiText="/api/user/all"
      [responseObj]="allUserResponse"

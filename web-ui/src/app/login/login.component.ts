@@ -1,5 +1,5 @@
 import { Inject } from '@angular/core';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -17,11 +17,10 @@ import 'rxjs/add/observable/interval';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit {
   title = 'Login';
   githubLink = 'https://github.com/bfwg/springboot-jwt-starter';
   form: FormGroup;
-  authSub: Subscription;
 
   /**
    * Boolean used in telling the UI
@@ -65,31 +64,19 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.submitted = true;
     this.errorDiagnostic = null;
 
-    let source = Observable.interval(500)
-    .map(() => {
-      this.authService.login(this.form.value)
-      .subscribe(data => {
-        this.userService.initUser();
-        this.router.navigate(['/']);
-      },
-      error => {
-        this.submitted = false;
-        this.errorDiagnostic = 'Incorrect username or password.';
-      });
+    this.authService.login(this.form.value)
+    // show me the animation
+    .delay(1000)
+    .subscribe(data => {
+      this.userService.getMyInfo().subscribe();
+      this.router.navigate(['/']);
+    },
+    error => {
+      this.submitted = false;
+      this.errorDiagnostic = 'Incorrect username or password.';
     });
 
-    this.resetAuthSub();
-    this.authSub = source.subscribe();
   }
 
-  ngOnDestroy() {
-    this.resetAuthSub();
-  }
-
-  resetAuthSub() {
-    if (this.authSub) {
-      this.authSub.unsubscribe();
-    }
-  }
 
 }

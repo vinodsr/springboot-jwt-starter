@@ -28,7 +28,7 @@ export class UserService {
   }
 
   getMyInfo() {
-    return this.apiService.get(this.config.whoami_url);
+    return this.apiService.get(this.config.whoami_url).map(user => this.currentUser = user);
   }
 
   getAll() {

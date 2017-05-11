@@ -10,13 +10,12 @@
     </p>
   </md-card-content>
   <md-card-actions>
-    <button md-raised-button color="primary" (click)="apiClick.next(apiText)">{{apiText}}</button>
+    <button md-raised-button color="primary" (click)="onButtonClick()">{{apiText}}</button>
   </md-card-actions>
-  <div *ngIf="responseObj.status" [class]="responsePanelClass()">
+  <div [class]="responsePanelClass()">
     <pre>Path: {{responseObj.path}}</pre>
     <pre>Method: {{responseObj.method}}</pre>
     <pre>Status: {{responseObj.status}}</pre>
     <pre>Body: {{responseObj.body}}</pre>
   </div>
-
 </md-card>
