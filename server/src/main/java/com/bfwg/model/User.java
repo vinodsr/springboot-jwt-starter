@@ -5,6 +5,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Entity
 @Table(name="USER")
-public class User implements UserDetails {
+public class User extends DeletableModel implements UserDetails, Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -87,11 +88,11 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-//        List<GrantedAuthority> grantedAuths = new ArrayList<>();
-//        grantedAuths.add(new SimpleGrantedAuthority("ROLE_USER"));
         return this.authorities;
     }
 
+    // We can add the below fields in the users table.
+    // For now, they are hardcoded.
     @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {

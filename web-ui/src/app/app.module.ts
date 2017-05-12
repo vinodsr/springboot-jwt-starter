@@ -4,7 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 // material
 import { MaterialModule, MdIconRegistry } from '@angular/material';
-import 'style-loader!@angular/material/core/theming/prebuilt/indigo-pink.css';
+import 'style-loader!@angular/material/prebuilt-themes/purple-green.css';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -41,7 +42,8 @@ export function initUserFactory(userService: UserService) {
     ReactiveFormsModule,
     HttpModule,
     AppRoutingModule,
-    MaterialModule.forRoot()
+    MaterialModule.forRoot(),
+    FlexLayoutModule.forRoot()
   ],
   providers: [
     FooService,

@@ -11,7 +11,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="Authority")
-public class Authority implements GrantedAuthority {
+public class Authority extends DatedModel implements GrantedAuthority {
 
     @Id
     @Column(name="id")

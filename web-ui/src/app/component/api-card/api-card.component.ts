@@ -29,16 +29,15 @@ export class ApiCardComponent implements OnInit {
   }
 
   responsePanelClass() {
-    if (!this.responseObj) {
-      return '';
-    }
     let rClass = ['response'];
     if (this.expand) {
       rClass.push('expand');
     }
-    this.responseObj.status === 200 ?
-      rClass.push('response-success') :
-      rClass.push('response-error');
+    if (this.responseObj.status) {
+      this.responseObj.status === 200 ?
+        rClass.push('response-success') :
+        rClass.push('response-error');
+    }
     return rClass.join(' ');
   }
 
