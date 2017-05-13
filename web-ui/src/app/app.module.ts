@@ -4,16 +4,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 // material
 import { MaterialModule, MdIconRegistry } from '@angular/material';
-import 'style-loader!@angular/material/prebuilt-themes/deeppurple-amber.css';
+import 'style-loader!@angular/material/prebuilt-themes/pink-bluegrey.css';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home';
 import { LoginComponent } from './login';
+
 import {
   HeaderComponent,
-  ApiCardComponent
+  ApiCardComponent,
+  FooterComponent,
+  GithubComponent
 } from './component';
 
 import {
@@ -32,8 +35,10 @@ export function initUserFactory(userService: UserService) {
   declarations: [
     AppComponent,
     HeaderComponent,
+    FooterComponent,
     ApiCardComponent,
     HomeComponent,
+    GithubComponent,
     LoginComponent
   ],
   imports: [

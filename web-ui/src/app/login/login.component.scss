@@ -9,7 +9,7 @@
 }
 
 md-card {
-  max-width: 365px;
+  max-width: 350px;
   text-align: center;
   animation: fadein 1s;
   -o-animation: fadein 1s; /* Opera */
@@ -39,3 +39,9 @@ button {
   font-weight: bold;
 }
 
+
+@media screen and (max-width: 599px) {
+  md-card {
+    max-width: 999px;
+  }
+}
