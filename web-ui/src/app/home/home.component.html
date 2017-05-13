@@ -1,16 +1,15 @@
-<div fxLayout="row" class="content">
-  <div fxFlex>
-    <app-api-card
-      title='"Foo"'
-      subTitle="Public"
-      imgUrl="assets/image/foo.png"
-      content='This is an demo public endpoint which requires no authentication.'
-      apiText="/api/foo"
-      [responseObj]="fooResponse"
-      (apiClick)="makeRequest($event)"
-    >
-    </app-api-card>
-  </div>
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center none">
+  <app-api-card
+    fxFlex
+    title='"Foo"'
+    subTitle="Public"
+    imgUrl="assets/image/foo.png"
+    content='This is an demo public endpoint which requires no authentication.'
+    apiText="/api/foo"
+    [responseObj]="fooResponse"
+    (apiClick)="makeRequest($event)"
+  >
+  </app-api-card>
 
   <app-api-card
      fxFlex
@@ -25,6 +24,7 @@
   </app-api-card>
 
   <app-api-card
+     class="last"
      fxFlex
      title='"All users"'
      subTitle="Authorized role: ADMIN"

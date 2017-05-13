@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 // material
 import { MaterialModule, MdIconRegistry } from '@angular/material';
-import 'style-loader!@angular/material/prebuilt-themes/purple-green.css';
+import 'style-loader!@angular/material/prebuilt-themes/deeppurple-amber.css';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
