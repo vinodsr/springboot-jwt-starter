@@ -8,4 +8,4 @@ jwt:
   secret: queenvictoria
   cookie: AUTH-TOKEN
 
-
+ 
